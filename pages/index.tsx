@@ -7,10 +7,10 @@ export default function Home() {
     <>
     <Head>
       <title>
-        
+        {process.env.NEXT_PUBLIC_WEBSITE_NAME}
       </title>
     </Head>
-    
+
     <HomePage />
     </>
   )

@@ -1,9 +1,23 @@
+:root {
+  --background-primary: #fff;
+  --background-secondary: #faf9ff;
+  --background-tertiary: #EFECFF;
+  --color-primary: #FF5959;
+  --color-secondary: #FF7171;
+  --text-primary: #131313;
+  --text-secondary: #606770;
+  --text-light-primary: #fff;
+  --text-light-secondary: #cccccc;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
 }
 
 a {

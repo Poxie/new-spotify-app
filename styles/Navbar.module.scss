@@ -1,7 +1,15 @@
+.container {
+    position: absolute;
+    z-index: 14;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-light-primary);
+    max-width: var(--width-max);
+}
 .content {
     padding: 22px 0;
     width: var(--width-main);
-    max-width: var(--width-max);
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;

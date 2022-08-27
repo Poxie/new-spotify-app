@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap');
+
 :root {
   --background-primary: #fff;
   --background-secondary: #faf9ff;
@@ -10,6 +12,8 @@
   --text-light-secondary: #cccccc;
   --button-background-primary: #FF5959;
   --button-background-primary-hover: #ff3434;
+  --button-background-secondary: #fff;
+  --button-background-secondary-hover: #dbd5ff;
   --width-main: 1100px;
   --width-max: 90%;
   --border-radius-primary: 8px;
@@ -23,6 +27,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: var(--text-primary);
   background-color: var(--background-primary);
+  font-family: 'Montserrat', sans-serif;
 }
 
 a {

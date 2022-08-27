@@ -26,6 +26,16 @@
             background-color: var(--button-background-primary-hover);
         }
     }
+    &.secondary {
+        background-color: var(--button-background-secondary);
+
+        svg {
+            fill: var(--text-primary);
+        }
+        &:hover {
+            background-color: var(--button-background-secondary-hover);
+        }
+    }
     &.hollow {
         border: 1px solid var(--text-light-primary);
         color: var(--text-light-primary);

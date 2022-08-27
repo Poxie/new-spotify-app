@@ -118,6 +118,14 @@
 }
 
 @media (max-width: 700px) {
+    .header-content {
+        h1 {
+            font-size: 46px;
+        }
+        p {
+            font-size: 18px;
+        }
+    }
     .tile {
         flex-direction: column;
     }
@@ -132,6 +140,26 @@
     }
 }
 @media (max-width: 500px) {
+    .header {
+        min-height: 70vh;
+    }
+    .header-content {
+        padding: 140px 0;
+
+        h1 {
+            font-size: 32px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+    .header-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .header-button {
+        justify-content: center;
+    }
     .tile-section-header {
         font-size: 34px;
     }

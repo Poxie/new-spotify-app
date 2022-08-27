@@ -1,0 +1,35 @@
+.content {
+    padding: 22px 0;
+    width: var(--width-main);
+    max-width: var(--width-max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 600;
+
+    span {
+        margin-top: -3px;
+    }
+}
+.header-image {
+    --dimensions: 40px;
+    
+    width: var(--dimensions);
+    height: var(--dimensions);
+    position: relative;
+
+    svg {
+        display: block;
+    }
+}
+.tabs {
+    display: flex;
+    gap: 20px;
+}

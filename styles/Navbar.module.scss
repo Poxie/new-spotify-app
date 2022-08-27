@@ -29,7 +29,13 @@
         display: block;
     }
 }
+.right {
+    --gap: 20px;
+    gap: var(--gap);
+    display: flex;
+    align-items: center;
+}
 .tabs {
     display: flex;
-    gap: 20px;
+    gap: var(--gap);
 }

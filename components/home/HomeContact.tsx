@@ -64,12 +64,14 @@ export const HomeContact = () => {
                         type={'email'}
                         onChange={setEmail}
                         value={email}
+                        name="email"
                     />
                     <Input 
                         label={'Message'}
                         textArea={true}
                         onChange={setMessage}
                         value={message}
+                        name="message"
                     />
                     <Button 
                         type={'secondary'}

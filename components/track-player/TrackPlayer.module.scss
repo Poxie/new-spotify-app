@@ -1,0 +1,32 @@
+.container {
+    --padding: 24px;
+    --image-dimensions: 180px;
+    padding: var(--padding);
+    background-color: var(--background-secondary);
+    border-radius: var(--border-radius-large);
+}
+.image {
+    position: relative;
+    width: var(--image-dimensions);
+    height: var(--image-dimensions);
+    border-radius: var(--border-radius-primary);
+    overflow: hidden;
+    display: block;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 12px;
+}
+.name {
+    font-weight: 600;
+    white-space: nowrap;
+    width: var(--image-dimensions);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.artist {
+    color: var(--text-secondary);
+    font-size: 13px;
+}

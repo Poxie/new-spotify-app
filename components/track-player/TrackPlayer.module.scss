@@ -1,6 +1,5 @@
 .container {
     --padding: 24px;
-    --image-dimensions: 180px;
     padding: var(--padding);
     background-color: var(--background-secondary);
     border-radius: var(--border-radius-large);
@@ -10,9 +9,10 @@
     user-select: none;
 }
 .image {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1;
     position: relative;
-    width: var(--image-dimensions);
-    height: var(--image-dimensions);
     border-radius: var(--border-radius-primary);
     overflow: hidden;
     display: block;
@@ -25,7 +25,7 @@
 .name {
     font-weight: 600;
     white-space: nowrap;
-    width: var(--image-dimensions);
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

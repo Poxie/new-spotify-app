@@ -9,11 +9,18 @@ const TrackPlayerControls = dynamic(
     { ssr: false }
 );
 
-export const TrackPlayer: React.FC<Track> = ({ uri, preview_url, name, artists, album }) => {
+export const TrackPlayer: React.FC<Track & {
+    className?: string;
+}> = ({ uri, preview_url, name, artists, album, className }) => {
     const image = album.images[0];
     const artist = artists[0];
+
+    className = [
+        styles['container'],
+        className ? className : ''
+    ].join(' ');
     return(
-        <div className={styles['container']}>
+        <div className={className}>
             <a 
                 className={styles['image']}
                 href={uri}

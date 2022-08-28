@@ -1,8 +1,15 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Track } from "../../types"
 import styles from './TrackPlayer.module.scss';
 
-export const TrackPlayer: React.FC<Track> = ({ uri, name, artists, album }) => {
+// Making sure controls are only visible to client users
+const TrackPlayerControls = dynamic(
+    () => import('./TrackPlayerControls').then(res => res.TrackPlayerControls),
+    { ssr: false }
+);
+
+export const TrackPlayer: React.FC<Track> = ({ uri, preview_url, name, artists, album }) => {
     const image = album.images[0];
     const artist = artists[0];
     return(
@@ -34,6 +41,9 @@ export const TrackPlayer: React.FC<Track> = ({ uri, name, artists, album }) => {
                     {artist.name}
                 </a>
             </div>
+            <TrackPlayerControls 
+                previewURL={preview_url}
+            />
         </div>
     )
 }

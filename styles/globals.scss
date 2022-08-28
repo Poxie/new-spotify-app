@@ -4,7 +4,7 @@
   --background-primary: #fff;
   --background-secondary: #F4F2FF;
   --background-secondary-rgb: 244, 242, 255;
-  --background-tertiary: #EFECFF;
+  --background-tertiary: #E9E6FF;
   --color-primary: #FF5959;
   --color-secondary: #FF7171;
   --text-primary: #131313;
@@ -46,6 +46,8 @@ button {
   background-color: transparent;
   cursor: pointer;
   border: none;
+  padding: 0;
+  margin: 0;
 }
 
 ul {

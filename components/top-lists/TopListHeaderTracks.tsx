@@ -7,7 +7,6 @@ export const TopListHeaderTracks: React.FC<{
     country: string;
 }> = ({ country }) => {
     const tracks = useAppSelector(state => selectTopList(state, country)).slice(0,5);
-    console.log(tracks);
 
     return(
         <div className={styles['header-tracks']}>

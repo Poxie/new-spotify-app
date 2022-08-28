@@ -5,6 +5,7 @@
   --background-secondary: #F4F2FF;
   --background-secondary-rgb: 244, 242, 255;
   --background-tertiary: #E9E6FF;
+  --background-quaternary: #d5d0ff;
   --color-primary: #FF5959;
   --color-secondary: #FF7171;
   --text-primary: #131313;
@@ -44,6 +45,7 @@ a {
 
 button {
   background-color: transparent;
+  font-family: inherit;
   cursor: pointer;
   border: none;
   padding: 0;

@@ -6,6 +6,7 @@ import {
     configureStore,
     ThunkAction,
   } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { createWrapper, HYDRATE } from 'next-redux-wrapper';
 import { authReducer } from './auth/reducer';
 import { AuthState } from './auth/types';
@@ -40,6 +41,10 @@ export type RootState = {
     auth: AuthState;
     topLists: TopListsState
 }
+
+// Hooks
 export type AppDispatch = Store['dispatch'];
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const wrapper = createWrapper(makeStore, { debug: false });

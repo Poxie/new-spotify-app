@@ -6,7 +6,7 @@ import { TopListTrack } from './TopListTrack';
 export const TopListTracks: React.FC<{
     country: string;
 }> = ({ country }) => {
-    const tracks = useAppSelector(state => selectTopList(state, country)).slice(5);
+    const tracks = useAppSelector(state => selectTopList(state, country)).slice(4);
 
     return(
         <section className={styles['tracks']}>
@@ -14,7 +14,7 @@ export const TopListTracks: React.FC<{
                 {tracks.map((track, key) => (
                     <TopListTrack 
                         {...track}
-                        index={key + 6}
+                        index={key + 5}
                         key={track.id}
                     />
                 ))}

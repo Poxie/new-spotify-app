@@ -1,15 +1,13 @@
 .container {
     position: absolute;
+    width: 100%;
     z-index: 14;
-    left: 50%;
-    transform: translateX(-50%);
     color: var(--text-light-primary);
-    max-width: var(--width-max);
 }
 .content {
     padding: 22px 0;
     width: var(--width-main);
-    max-width: 100%;
+    max-width: var(--width-max);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -46,4 +44,33 @@
 .tabs {
     display: flex;
     gap: var(--gap);
+}
+.ham {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .right {
+        --gap: 40px;
+        position: fixed;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--color-secondary);
+        flex-direction: column;
+        padding: 90px 0;
+        font-size: 22px;
+    }
+    .button {
+        font-size: 16px;
+    }
+    .tabs {
+        flex-direction: column;
+        text-align: center;
+    }
+    .ham {
+        display: block;
+    }
 }

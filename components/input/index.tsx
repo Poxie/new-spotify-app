@@ -47,6 +47,7 @@ export const Input: React.FC<{
         className: inputClassName,
         value,
         name,
+        id: name,
         required: true,
         ref
     }

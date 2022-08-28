@@ -18,6 +18,7 @@ export const Input: React.FC<{
 
     // Set value change, update input value
     useEffect(() => {
+        if(!_value) return;
         setValue(_value)
     }, [_value]);
 

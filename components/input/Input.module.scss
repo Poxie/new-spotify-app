@@ -36,6 +36,7 @@
     textarea {
         min-height: 120px;
         padding-top: 25px;
+        resize: vertical;
 
         &+label {
             transform: none;

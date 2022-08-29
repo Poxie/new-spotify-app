@@ -11,6 +11,18 @@ export const TopListTracks: React.FC<{
     return(
         <section className={styles['tracks']}>
             <ul className={styles['track-container']}>
+                {tracks.length === 0 && (
+                    <>
+                    {Array.from(Array(5)).map((_, key) => (
+                        <TopListTrack 
+                            index={key + 5}
+                            loading={true}
+                            key={key}
+                        />
+                    ))}
+                    </>
+                )}
+
                 {tracks.map((track, key) => (
                     <TopListTrack 
                         {...track}

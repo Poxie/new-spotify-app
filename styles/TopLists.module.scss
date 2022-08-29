@@ -39,6 +39,7 @@
 }
 .track {
     padding: 16px;
+    height: 60px;
     background-color: var(--background-tertiary);
     border-radius: var(--border-radius-primary);
     display: flex;
@@ -66,6 +67,20 @@
     border-radius: 4px;
     overflow: hidden;
     position: relative;
+    background-color: var(--background-quaternary);
+}
+.loading-track-name, .loading-track-artist {
+    background-color: var(--background-quaternary);
+    border-radius: 6px;
+}
+.loading-track-name {
+    width: 100px;
+    height: 20px;
+    display: block;
+}
+.loading-track-artist {
+    width: 120px;
+    height: 16px;
 }
 .track-artist {
     color: var(--text-secondary);

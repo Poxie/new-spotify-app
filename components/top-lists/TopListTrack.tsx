@@ -2,9 +2,30 @@ import Image from 'next/image';
 import styles from '../../styles/TopLists.module.scss'
 import { Track } from "../../types"
 
-export const TopListTrack: React.FC<Track & {
+export const TopListTrack: React.FC<Partial<Track> & {
     index: number;
-}> = ({ uri, name, index, artists, album }) => {
+    loading?: boolean;
+}> = ({ uri, name, index, artists, album, loading }) => {
+    if(loading || !artists || !album) {
+        return(
+            <li className={styles['track']}>
+                <span className={styles['track-index']}>
+                    {index}
+                </span>
+                
+                <div className={styles['track-main']}>
+                    <div className={styles['track-name']}>
+                        <div className={styles['track-image']} />
+                        <span className={styles['loading-track-name']} />
+                    </div>
+
+                    <span className={styles['loading-track-artist']} />
+                </div>
+
+            </li>
+        )
+    }
+    
     const artist = artists[0];
     
     return(

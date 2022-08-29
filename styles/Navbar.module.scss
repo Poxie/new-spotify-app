@@ -2,7 +2,11 @@
     position: absolute;
     width: 100%;
     z-index: 14;
-    color: var(--text-light-primary);
+    color: var(--text-primary);
+
+    &.light {
+        color: var(--text-light-primary);
+    }
 }
 .content {
     padding: 22px 0;

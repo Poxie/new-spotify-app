@@ -16,11 +16,24 @@
     border-radius: var(--border-radius-primary);
     overflow: hidden;
     display: block;
+    background-color: var(--background-tertiary);
 }
 .text {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+.name-loading, .artist-loading {
+    background-color: var(--background-quaternary);
+    border-radius: 6px;
+}
+.name-loading {
+    height: 20px;
+    width: 120px;
+}
+.artist-loading {
+    width: 50px;
+    height: 15px;
 }
 .name {
     font-weight: 600;

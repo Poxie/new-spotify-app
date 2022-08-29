@@ -9,16 +9,30 @@ const TrackPlayerControls = dynamic(
     { ssr: false }
 );
 
-export const TrackPlayer: React.FC<Track & {
+export const TrackPlayer: React.FC<Partial<Track> & {
     className?: string;
-}> = ({ uri, preview_url, name, artists, album, className }) => {
-    const image = album.images[0];
-    const artist = artists[0];
-
+    loading?: boolean;
+}> = ({ loading, uri, preview_url, name, artists, album, className }) => {
     className = [
         styles['container'],
         className ? className : ''
     ].join(' ');
+    
+    if(loading || !album || !artists) {
+        return(
+            <div className={className}>
+                <div className={styles['image']}/>
+                <div className={styles['text']}>
+                    <div className={styles['name-loading']} />
+                    <div className={styles['artist-loading']} />
+                </div>
+                <TrackPlayerControls previewURL="" />
+            </div>
+        )
+    }
+
+    const image = album.images[0];
+    const artist = artists[0];
     return(
         <div className={className}>
             <a 
@@ -49,7 +63,7 @@ export const TrackPlayer: React.FC<Track & {
                 </a>
             </div>
             <TrackPlayerControls 
-                previewURL={preview_url}
+                previewURL={preview_url || ''}
             />
         </div>
     )

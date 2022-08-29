@@ -10,6 +10,18 @@ export const TopListHeaderTracks: React.FC<{
 
     return(
         <div className={styles['header-tracks']}>
+            {tracks.length === 0 && (
+                <>
+                {Array.from(Array(4)).map((_, key) => (
+                    <TrackPlayer 
+                        className={styles['header-track']}
+                        loading={true}
+                        key={key}
+                    />
+                ))}
+                </>
+            )}
+
             {tracks.map(track => (
                 <TrackPlayer 
                     {...track}

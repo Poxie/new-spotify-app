@@ -23,6 +23,7 @@ export const TopListTrack: React.FC<Track & {
                             src={album.images[0].url}
                             layout={'fill'}
                             objectFit={'cover'}
+                            alt={`${album.name} album image`}
                         />
                     </a>
                     <a href={uri}>

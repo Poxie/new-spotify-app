@@ -2,7 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import { CSSProperties } from "react";
 
-const IMAGE_SIZE = 18;
+const IMAGE_SIZE = 20;
 export const TrackPlayerButton: React.FC<{
     icon: string;
     onClick?: () => void;

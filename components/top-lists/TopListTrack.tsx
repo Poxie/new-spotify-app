@@ -4,11 +4,17 @@ import { Track } from "../../types"
 
 export const TopListTrack: React.FC<Partial<Track> & {
     index: number;
+    noAnimation?: boolean;
     loading?: boolean;
-}> = ({ uri, name, index, artists, album, loading }) => {
+}> = ({ uri, name, index, artists, album, loading, noAnimation }) => {
+    const className = [
+        styles['track'],
+        noAnimation ? styles['no-animation'] : ''
+    ].join(' ');
+
     if(loading || !artists || !album) {
         return(
-            <li className={styles['track']}>
+            <li className={className}>
                 <span className={styles['track-index']}>
                     {index}
                 </span>
@@ -26,10 +32,13 @@ export const TopListTrack: React.FC<Partial<Track> & {
         )
     }
     
+    const firstDigit = parseInt(index.toString().slice(0,1));
+    const prevIndex = parseInt(index.toString().slice(1,2)) === 0 ? (firstDigit - 1) * 10 : firstDigit * 10;
+    const delay = ((index - prevIndex) * .05);
+
     const artist = artists[0];
-    
     return(
-        <li className={styles['track']}>
+        <li className={className} style={{ animationDelay: `${delay}s` }}>
             <span className={styles['track-index']}>
                 {index}
             </span>

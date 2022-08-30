@@ -1,0 +1,32 @@
+.item {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    max-width: 90%;
+    background-color: var(--background-primary);
+    border-radius: var(--border-radius-primary);
+    box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px 0px;
+    padding: 16px 42px;
+    text-align: center;
+    z-index: 1414;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        border-radius: 120px;
+    }
+    &.error {
+        &::after {
+            background-color: #ff5252;
+        }
+    }
+    &.success {
+        &::after {
+            background-color: #00c700;
+        }
+    }
+}

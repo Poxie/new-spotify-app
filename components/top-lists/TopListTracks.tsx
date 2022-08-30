@@ -27,7 +27,7 @@ export const TopListTracks: React.FC<{
             <ul className={styles['track-container']}>
                 {visibleTracks.length === 0 && (
                     <>
-                    {Array.from(Array(5)).map((_, key) => (
+                    {Array.from(Array(6)).map((_, key) => (
                         <TopListTrack 
                             index={key + 5}
                             noAnimation={true}

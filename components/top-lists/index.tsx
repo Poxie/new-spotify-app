@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useToast } from "../../contexts/toast/ToastProvider";
 import { selectAuthToken, selectAuthTokenLoading } from "../../redux/auth/selectors";
 import { useAppDispatch, useAppSelector } from "../../redux/store"
 import { setTopList } from "../../redux/top-lists/actions";
@@ -8,6 +9,7 @@ import { TopListHeader } from "./TopListHeader";
 import { TopListTracks } from "./TopListTracks";
 
 export const TopLists = () => {
+    const { setToast } = useToast();
     const { country='Global' } = useRouter().query as { country?: string };
     const tracks = useAppSelector(selectTopLists);
     const token = useAppSelector(selectAuthToken);
@@ -31,6 +33,12 @@ export const TopLists = () => {
                 });
                 const { items } = await trackData.json();
                 dispatch(setTopList(country, items.map((item: any) => item.track)));
+            }).catch(error => {
+                setToast({
+                    content: 'Something went wrong loading tracks. Please try again.',
+                    type: 'error',
+                    interval: 7000
+                })
             })
         }
     }, [country, tracks, token, tokenLoading]);

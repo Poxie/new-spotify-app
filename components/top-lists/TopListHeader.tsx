@@ -29,7 +29,7 @@ export const TopListHeader: React.FC<{
                 <Dropdown 
                     items={COUNTRIES}
                     onChange={changeList}
-                    defaultSelected={'Global'}
+                    defaultSelected={country}
                     allowSearch={true}
                 />
             </div>

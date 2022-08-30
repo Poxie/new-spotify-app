@@ -6,6 +6,10 @@
 
     &.light {
         color: var(--text-light-primary);
+
+        .tab {
+            color: var(--text-light-primary);
+        }
     }
 }
 .content {
@@ -48,6 +52,13 @@
 .tabs {
     display: flex;
     gap: var(--gap);
+}
+.tab {
+    color: var(--text-secondary);
+
+    &.active, &:hover {
+        color: var(--text-primary);
+    }
 }
 .ham {
     display: none;

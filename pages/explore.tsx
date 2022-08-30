@@ -6,7 +6,7 @@ export default function explore() {
         <>
         <Head>
             <title>
-                Explore - {}
+                Explore - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
         </Head>
 

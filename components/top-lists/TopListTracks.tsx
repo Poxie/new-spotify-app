@@ -2,7 +2,7 @@ import styles from '../../styles/TopLists.module.scss';
 import { useAppSelector } from "../../redux/store";
 import { selectTopList } from "../../redux/top-lists/hooks";
 import { TopListTrack } from './TopListTrack';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../button';
 
 export const TopListTracks: React.FC<{
@@ -10,6 +10,11 @@ export const TopListTracks: React.FC<{
 }> = ({ country }) => {
     const [count, setCount] = useState(10);
     const tracks = useAppSelector(state => selectTopList(state, country)).slice(4);
+
+    // Resetting count on country change
+    useEffect(() => {
+        setCount(10);
+    }, [country]);
 
     // Showing more tracks
     const loadMore = () => {

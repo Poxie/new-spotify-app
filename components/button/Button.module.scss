@@ -36,6 +36,14 @@
             background-color: var(--button-background-secondary-hover);
         }
     }
+    &.transparent {
+        background-color: transparent;
+        color: var(--text-secondary);
+
+        &:hover {
+            color: var(--text-primary);
+        }
+    }
     &.hollow {
         border: 1px solid var(--text-light-primary);
         color: var(--text-light-primary);

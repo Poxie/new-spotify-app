@@ -12,10 +12,13 @@ import { authReducer } from './auth/reducer';
 import { AuthState } from './auth/types';
 import { topListsReducer } from './top-lists/reducer';
 import { TopListsState } from './top-lists/types';
+import { ExploreState } from './explore/types';
+import { exploreReducer } from './explore/reducer';
 
 const combinedReducer = combineReducers({
     auth: authReducer,
-    topLists: topListsReducer
+    topLists: topListsReducer,
+    explore: exploreReducer
 });
 
 const reducer = (state: ReturnType<typeof combinedReducer>, action: AnyAction) => {
@@ -39,7 +42,8 @@ export type RootState = {
     readonly [$CombinedState]?: undefined;
 } & {
     auth: AuthState;
-    topLists: TopListsState
+    topLists: TopListsState;
+    explore: ExploreState;
 }
 
 // Hooks

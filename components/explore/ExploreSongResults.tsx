@@ -11,9 +11,12 @@ export const ExploreSongResults: React.FC<{
 }> = ({ track, artist }) => {
     const token = useAppSelector(selectAuthToken);
     const [results, setResults] = useState<Track[]>([]);
+    const [loading, setLoading] = useState(true);
 
     // Fetching recommendations based on track and artist
     useEffect(() => {
+        setLoading(true);
+
         // Creating recommendation request for each artist genre
         const requests = artist.genres.map(genre => {
             return fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/recommendations?seed_artists=${artist.id}&seed_tracks=${track.id}&seed_genres=${genre}`, {
@@ -41,6 +44,7 @@ export const ExploreSongResults: React.FC<{
 
                 // Setting results
                 setResults(allTracks);
+                setLoading(false);
             })
     }, [token, track, artist]);
 
@@ -51,7 +55,14 @@ export const ExploreSongResults: React.FC<{
             </h2>
 
             <div className={styles['song-result-container']}>
-                {results.map(result => (
+                {loading && Array.from(Array(10)).map((_, key) => (
+                    <TrackPlayer 
+                        loading={true}
+                        key={key}
+                    />
+                ))}
+
+                {!loading && results.map(result => (
                     <TrackPlayer 
                         {...result}
                         key={result.id}

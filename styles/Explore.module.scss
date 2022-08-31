@@ -47,3 +47,55 @@
     height: 3px;
     transition: left .3s;
 }
+.sub-header {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+.selectors {
+    display: grid;
+    gap: 15px;
+}
+.selector {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+}
+.selector-preview {
+    display: flex;
+    gap: 15px;
+    width: 350px;
+}
+.selector-image {
+    overflow: hidden;
+    border-radius: var(--border-radius-primary);
+}
+.selector-image, .loading-selector-title, .loading-selector-subtitle, .loading-selector-extra {
+    background-color: var(--background-tertiary);
+    border-radius: var(--border-radius-primary);
+}
+.loading-selector-title {
+    height: 27px;
+    width: 100px;
+}
+.loading-selector-subtitle {
+    height: 19px;
+    width: 160px;
+}
+.loading-selector-extra {
+    height: 17px;
+    width: 180px;
+}
+.selector-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.selector-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+.selector-extra {
+    font-size: 14px;
+}

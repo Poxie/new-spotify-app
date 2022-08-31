@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { setExploreSongArtist, setExploreSongTrack } from '../../redux/explore/actions';
+import { selectExploreSongValid } from '../../redux/explore/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import styles from '../../styles/Explore.module.scss';
-import { Artist, Track } from '../../types';
 import { ExploreSongResults } from './ExploreSongResults';
 import { ExploreSongSelector } from './ExploreSongSelector';
 
 export const ExploreSongs = () => {
-    const [artist, setArtist] = useState<Artist | null>(null);
-    const [track, setTrack] = useState<Track | null>(null);
+    const valid = useAppSelector(selectExploreSongValid);
 
     return(
         <>
@@ -17,19 +17,14 @@ export const ExploreSongs = () => {
         <div className={styles['selectors']}>
             <ExploreSongSelector 
                 type={'track'}
-                onChange={item => setTrack(item as Track)}
             />
             <ExploreSongSelector 
                 type={'artist'}
-                onChange={item => setArtist(item as Artist)}
             />
         </div>
 
-        {artist && track && (
-            <ExploreSongResults 
-                track={track}
-                artist={artist}
-            />
+        {valid && (
+            <ExploreSongResults />
         )}
         </>
     )

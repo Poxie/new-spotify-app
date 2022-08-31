@@ -3,16 +3,21 @@ import { useState } from "react"
 import { Artist, Track } from "../../types";
 import { SearchInput } from "../search-input/SearchInput"
 import { ExploreSongSelectorPreview } from './ExploreSongSelectorPreview';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { selectExploreSongArtist, selectExploreSongTrack } from '../../redux/explore/hooks';
+import { setExploreSongArtist, setExploreSongTrack } from '../../redux/explore/actions';
 
 export const ExploreSongSelector: React.FC<{
     type: 'track' | 'artist';
-    onChange: (item: Artist | Track) => void;
-}> = ({ type, onChange }) => {
-    const [item, setItem] = useState<Artist | Track | null>(null);
+}> = ({ type }) => {
+    const dispatch = useAppDispatch();
+    const track = useAppSelector(selectExploreSongTrack);
+    const artist = useAppSelector(selectExploreSongArtist);
+    const item = type === 'track' ? track : artist;
 
     const updateItem = (item: Artist | Track) => {
-        onChange(item);
-        setItem(item);
+        const dispatchType = type === 'track' ? setExploreSongTrack : setExploreSongArtist;
+        dispatch(dispatchType(item as any));
     }
 
     return(

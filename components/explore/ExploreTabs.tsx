@@ -19,7 +19,7 @@ export const ExploreTabs = () => {
     useEffect(() => {
         if(!stripe.current) return;
 
-        stripe.current.style.left = `${tabIndex * 25}%`;
+        stripe.current.style.left = `${tabIndex * 50}%`;
     }, [tabIndex]);
 
     return(

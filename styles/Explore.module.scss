@@ -21,7 +21,7 @@
     position: relative;
 }
 .tab {
-    flex-basis: 25%;
+    flex-basis: 50%;
     text-align: center;
     border-bottom: 1px solid var(--background-quaternary);
     color: var(--text-secondary);
@@ -44,7 +44,7 @@
     background-color: var(--text-primary);
     position: absolute;
     bottom: -1px;
-    width: 25%;
+    width: 50%;
     height: 3px;
     transition: left .3s;
 }
@@ -114,4 +114,14 @@
     grid-template-columns: repeat(auto-fill, minmax(min(200px,100%), 1fr));
     gap: 15px;
     margin-top: var(--container-gap);
+}
+
+@media (max-width: 700px) {
+    .selectors {
+        gap: 40px;
+    }
+    .selector {
+        flex-direction: column;
+        align-items: unset;
+    }
 }

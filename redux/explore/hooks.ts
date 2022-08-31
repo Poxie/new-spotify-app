@@ -8,3 +8,8 @@ export const selectExploreSongValid = createSelector(
     [selectExploreSongTrack, selectExploreSongArtist],
     (track, artist) => track && artist
 );
+
+export const selectExploreArtistsArtist = (state: RootState) => state.explore.artists.artist;
+export const selectExploreArtistsRelatedArtists = (state: RootState) => state.explore.artists.relatedArtists;
+export const selectExploreArtistAlbums = (state: RootState) => state.explore.artists.albums;
+export const selectExploreArtistsPopuplarSongs = (state: RootState) => state.explore.artists.popularSongs;

@@ -6,6 +6,12 @@ const initialState = {
         track: null,
         artist: null,
         results: []
+    },
+    artists: {
+        artist: null,
+        relatedArtists: [],
+        albums: [],
+        popularSongs: []
     }
 } as ExploreState;
 
@@ -35,6 +41,42 @@ export const exploreReducer: ExploreReducer = (state=initialState, action: AnyAc
                 songs: {
                     ...state.songs,
                     results: action.payload
+                }
+            }
+        }
+        case 'SET_EXPLORE_ARTISTS_ARTIST': {
+            return {
+                ...state,
+                artists: {
+                    ...state.artists,
+                    artist: action.payload
+                }
+            }
+        }
+        case 'SET_EXPLORE_ARTISTS_RELATED_ARTIST': {
+            return {
+                ...state,
+                artists: {
+                    ...state.artists,
+                    relatedArtists: action.payload
+                }
+            }
+        }
+        case 'SET_EXPLORE_ARTISTS_ALBUMS': {
+            return {
+                ...state,
+                artists: {
+                    ...state.artists,
+                    albums: action.payload
+                }
+            }
+        }
+        case 'SET_EXPLORE_ARTISTS_POPULAR_SONGS': {
+            return {
+                ...state,
+                artists: {
+                    ...state.artists,
+                    popularSongs: action.payload
                 }
             }
         }

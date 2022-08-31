@@ -7,12 +7,14 @@ export const Input: React.FC<{
     inputClassName?: string;
     onChange?: (value: string) => void;
     onSubmit?: (value: string) => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
     value?: string;
     name?: string;
     label?: string;
     type?: HTMLInputTypeAttribute;
     textArea?: boolean;
-}> = ({ focusOnMount, containerClassName, inputClassName, onChange, onSubmit, name, label, textArea=false, type='text', value: _value }) => {
+}> = ({ focusOnMount, containerClassName, inputClassName, onChange, onSubmit, onFocus, onBlur, name, label, textArea=false, type='text', value: _value }) => {
     const [value, setValue] = useState(_value || '');
     const ref = useRef<any>(null);
 
@@ -46,6 +48,8 @@ export const Input: React.FC<{
         onChange: handleChange,
         onKeyDown: handleKeyDown,
         className: inputClassName,
+        onFocus: onFocus,
+        onBlur: onBlur,
         value,
         name,
         id: name,

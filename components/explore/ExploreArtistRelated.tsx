@@ -13,7 +13,7 @@ export const ExploreArtistRelated = () => {
                 Related artists
             </h2>
             <div className={styles['related-artists-container']}>
-                {artists.slice(0,4).map(artist => (
+                {artists.slice(0,8).map(artist => (
                     <ExploreArtistInfoCard 
                         uri={artist.uri}
                         title={artist.name}

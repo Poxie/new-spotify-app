@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { selectAuthToken } from '../../redux/auth/selectors';
 import { setExploreSongResults } from '../../redux/explore/actions';
 import { selectExploreSongArtist, selectExploreSongResults, selectExploreSongTrack } from '../../redux/explore/hooks';
@@ -14,6 +14,27 @@ export const ExploreSongResults = () => {
     const artist = useAppSelector(selectExploreSongArtist);
     const results = useAppSelector(selectExploreSongResults);
     const [loading, setLoading] = useState(false);
+    const [showItemAmount, setShowItemAmount] = useState(20);
+    const ref = useRef<HTMLDivElement>(null);
+
+    // Showing more results on scroll
+    useEffect(() => {
+        const checkScroll = () => {
+            if(!ref.current) return;
+
+            const height = ref.current.getBoundingClientRect().height;
+            const fromTop = ref.current.offsetTop;
+
+            const bottom = height + fromTop;
+            const scroll = window.scrollY + window.innerHeight
+        
+            // If meet threshold, show more items
+            if(scroll >= bottom) setShowItemAmount(prev => prev + 20);
+        }
+
+        document.addEventListener('scroll', checkScroll);
+        return () => document.removeEventListener('scroll', checkScroll);
+    }, []);
 
     // Fetching recommendations based on track and artist
     useEffect(() => {
@@ -57,7 +78,7 @@ export const ExploreSongResults = () => {
                 Songs related to <strong>{artist?.name}</strong> and <strong>{track?.name}</strong>.
             </h2>
 
-            <div className={styles['song-result-container']}>
+            <div className={styles['song-result-container']} ref={ref}>
                 {loading && Array.from(Array(10)).map((_, key) => (
                     <TrackPlayer 
                         loading={true}
@@ -65,7 +86,7 @@ export const ExploreSongResults = () => {
                     />
                 ))}
 
-                {!loading && results.slice(0, 20).map(result => (
+                {!loading && results.slice(0, showItemAmount).map(result => (
                     <TrackPlayer 
                         {...result}
                         key={result.id}

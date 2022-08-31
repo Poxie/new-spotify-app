@@ -6,13 +6,12 @@ const TABS = ['Songs', 'Artists'];
 export const ExploreTabs = () => {
     const router = useRouter();
     const { tab: activeTab='songs' } = router.query as { tab: string };
-    const [tabIndex, setTabIndex] = useState(0);
+    const tabIndex = TABS.map(t => t.toLowerCase()).indexOf(activeTab);
     const stripe = useRef<HTMLDivElement>(null);
 
     // Changing tab
     const changeTab = (tab: string) => {
         router.push(`/explore?tab=${tab}`, undefined, { shallow: true });
-        setTabIndex(TABS.map(t => t.toLowerCase()).indexOf(tab));
     }
 
     // Updating stripe

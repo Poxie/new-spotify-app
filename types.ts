@@ -8,6 +8,7 @@ export type Track = {
     album: Album;
     uri: string;
     popularity: number;
+    type: string;
 }
 export type Album = {
     artists: Artist[];
@@ -17,6 +18,7 @@ export type Album = {
     name: string;
     release_date: string;
     uri: string;
+    type: string;
 }
 export type Artist = {
     name: string;
@@ -25,6 +27,7 @@ export type Artist = {
     followers: { total: number }
     genres: string[]
     images: Image[];
+    type: string
 }
 export type Image = {
     height: number;

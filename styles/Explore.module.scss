@@ -117,7 +117,7 @@
 }
 .artist-info {
     display: flex;
-    justify-content: space-between;
+    gap: 80px;
 }
 .artist-card {
     display: flex;
@@ -172,6 +172,62 @@
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(min(260px,100%), 1fr));
+}
+.artist-work {
+    display: flex;
+    gap: 20px;
+
+    &>div {
+        flex: 1;
+    }
+}
+.artist-tracks-header {
+    font-weight: 600;
+    display: block;
+    padding: 15px;
+    background-color: var(--background-tertiary);
+}
+.artist-tracks {
+    background-color: var(--background-secondary);
+    border-radius: var(--border-radius-primary);
+    overflow: hidden;
+}
+.artist-track-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+    max-height: 240px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        background-color: var(--background-tertiary);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--background-quaternary);
+        border-radius: 120px;
+    }
+}
+.artist-track {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+        font-size: 14px;
+    }
+}
+.artist-track-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.artist-track-image {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 @media (max-width: 800px) {

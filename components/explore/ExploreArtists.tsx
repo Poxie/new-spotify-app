@@ -6,6 +6,7 @@ import { Artist } from '../../types'
 import { SearchInput } from '../search-input/SearchInput'
 import { ExploreArtistInfo } from './ExploreArtistInfo'
 import { ExploreArtistRelated } from './ExploreArtistRelated'
+import { ExploreArtistWork } from './ExploreArtistWork'
 
 export const ExploreArtists = () => {
     const dispatch = useAppDispatch();
@@ -45,6 +46,7 @@ export const ExploreArtists = () => {
 
             <ExploreArtistInfo />
             <ExploreArtistRelated />
+            <ExploreArtistWork />
         </>
     )
 }

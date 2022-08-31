@@ -7,6 +7,7 @@ export type Track = {
     artists: Artist[];
     album: Album;
     uri: string;
+    popularity: number;
 }
 export type Album = {
     artists: Artist[];

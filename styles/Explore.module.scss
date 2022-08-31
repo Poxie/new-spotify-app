@@ -115,7 +115,74 @@
     gap: 15px;
     margin-top: var(--container-gap);
 }
+.artist-info {
+    display: flex;
+    justify-content: space-between;
+}
+.artist-card {
+    display: flex;
+    gap: 15px;
 
+    &.small {
+        .artist-card-image {
+            width: 80px;
+            height: 80px;
+        }
+        .artist-card-name {
+            font-size: 18px;
+        }
+        .artist-card-subtitle {
+            font-size: 13px;
+        }
+        .artist-card-extra {
+            font-size: 12px;
+        }
+    }
+}
+.artist-card-image {
+    border-radius: var(--border-radius-primary);
+    overflow: hidden;
+    position: relative;
+    width: 160px;
+    height: 160px;
+}
+.artist-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.artist-card-header {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+.artist-card-name {
+    font-size: 26px;
+    font-weight: 700;
+}
+.artist-card-extra {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+.related-artists {
+    h2 {
+        margin-top: 0;
+    }
+}
+.related-artists-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(min(260px,100%), 1fr));
+}
+
+@media (max-width: 800px) {
+    .artist-card-image {
+        width: 100px;
+        height: 100px;
+    }
+    .artist-card-name {
+        font-size: 18px;
+    }
+}
 @media (max-width: 700px) {
     .selectors {
         gap: 40px;
@@ -123,5 +190,9 @@
     .selector {
         flex-direction: column;
         align-items: unset;
+    }
+    .artist-info {
+        flex-direction: column;
+        gap: 15px;
     }
 }

@@ -2,21 +2,37 @@ import styles from './TrackPlayer.module.scss';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from "next/image"
 import { TrackPlayerButton } from './TrackPlayerButton';
+import { useToast } from '../../contexts/toast/ToastProvider';
 
 const DURATION = 30 * 1000;
 export const TrackPlayerControls: React.FC<{
     previewURL: string;
 }> = ({ previewURL }) => {
+    const { setToast } = useToast();
     const [playing, setPlaying] = useState(false);
     const [current, setCurrent] = useState(0);
+    const [errored, setErrored] = useState(false);
     const audio = useRef(new Audio(previewURL));
     const container = useRef<HTMLDivElement>(null);
     const mouseDown = useRef(false);
 
     const play = useCallback(() => {
-        if(!playing) audio.current.play();
-        else audio.current.pause();
-        setPlaying(!playing);
+        if(!playing) {
+            audio.current.play()
+                .then(() => {
+                    setPlaying(true);
+                })
+                .catch(error => {
+                    setToast({
+                        content: 'Unable to play song preview.',
+                        type: 'error'
+                    })
+                    setErrored(true);
+                })
+        } else {
+            audio.current.pause();
+            setPlaying(false);
+        }
     }, [audio.current, playing]);
 
     useEffect(() => {
@@ -122,6 +138,7 @@ export const TrackPlayerControls: React.FC<{
                     icon={playing ? 'pause' : 'play'}
                     ariaLabel={playing ? 'Pause preview' : 'Play preview'}
                     onClick={play}
+                    style={{ pointerEvents: errored ? 'none' : 'all' }}
                 />
                 <TrackPlayerButton 
                     icon={'reverse'}

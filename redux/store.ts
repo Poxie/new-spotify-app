@@ -23,6 +23,10 @@ const combinedReducer = combineReducers({
 
 const reducer = (state: ReturnType<typeof combinedReducer>, action: AnyAction) => {
     if (action.type === HYDRATE) {
+        // We dont want to override those values
+        delete action.payload.explore;
+        delete action.payload.topLists;
+
         const nextState = {
             ...state, // use previous state
             ...action.payload, // apply delta from hydration

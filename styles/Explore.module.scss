@@ -1,11 +1,12 @@
 .container {
+    --container-gap: 50px;
+    gap: var(--container-gap);
     width: var(--width-main);
     max-width: var(--width-max);
     margin: 0 auto;
     padding: 140px 0;
     display: flex;
     flex-direction: column;
-    gap: 50px;
 }
 .header {
     font-size: 50px;
@@ -98,4 +99,19 @@
 }
 .selector-extra {
     font-size: 14px;
+}
+.song-results {
+    border-top: 1px solid var(--background-tertiary);
+    padding-top: var(--container-gap);
+}
+.song-results-header {
+    font-weight: 500;
+    margin: 0;
+}
+.song-result-container {
+    --row-amount: 4;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(200px,100%), 1fr));
+    gap: 15px;
+    margin-top: var(--container-gap);
 }

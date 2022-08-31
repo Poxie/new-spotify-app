@@ -26,9 +26,9 @@ export const ExploreSongSelector: React.FC<{
                 title={item?.name}
                 image={type === 'track' ? 
                     (
-                        (item as Track)?.album?.images[1]?.url
+                        (item as Track)?.album?.images[2]?.url
                     ) : (
-                        (item as Artist)?.images[1]?.url
+                        (item as Artist)?.images[2]?.url
                     )
                 }
                 subtitle={type === 'track' ? 

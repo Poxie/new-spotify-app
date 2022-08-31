@@ -31,7 +31,7 @@ export const TrackPlayer: React.FC<Partial<Track> & {
         )
     }
 
-    const image = album.images[0];
+    const image = album.images[1];
     const artist = artists[0];
     return(
         <div className={className}>
@@ -40,7 +40,7 @@ export const TrackPlayer: React.FC<Partial<Track> & {
                 href={uri}
             >
                 <Image 
-                    src={image.url}
+                    src={image?.url}
                     layout={'fill'}
                     objectFit={'cover'}
                     alt={`${name} image preview`}

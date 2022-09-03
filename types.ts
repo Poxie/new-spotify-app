@@ -1,3 +1,9 @@
+export type Profile = {
+    display_name: string;
+    followers: { count: number };
+    images: Image[];
+    uri: string;
+}
 export type Track = {
     name: string;
     preview_url: string;

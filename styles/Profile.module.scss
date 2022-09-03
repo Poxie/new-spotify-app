@@ -3,20 +3,20 @@
     max-width: var(--width-max);
     margin: 0 auto;
     padding: 100px 0;
-}
-.tops {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-
-    h2 {
-        font-size: 30px;
-    }
+    gap: 50px;
 }
 .top-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
+
+    h2 {
+        font-size: 30px;
+        margin: 0;
+    }
 }
 .top-header-main {
     display: flex;

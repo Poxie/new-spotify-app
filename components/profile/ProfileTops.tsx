@@ -36,7 +36,7 @@ export const ProfileTops = () => {
     }
 
     return(
-        <div className={styles['tops']}>
+        <>
             <ProfileTop 
                 items={artists}
                 type={'artists'}
@@ -49,6 +49,6 @@ export const ProfileTops = () => {
                 activeTerm={activeTrackTerm}
                 header={'Your most played tracks'}
             />
-        </div>
+        </>
     )
 }

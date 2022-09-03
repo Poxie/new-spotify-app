@@ -16,6 +16,11 @@
 .top-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+.top-header-main {
+    display: flex;
+    align-items: center;
     gap: 25px;
 }
 .top-items {

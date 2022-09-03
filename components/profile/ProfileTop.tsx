@@ -37,18 +37,24 @@ export const ProfileTop: React.FC<{
         }))
     }
 
-    const showAmount = expanded ? items.length : 6;
+    const showAmount = expanded ? items?.length || 6 : 6;
     return(
         <div className={styles['top']}>
             <div className={styles['top-header']}>
-                <h2>
-                    {header}
-                </h2>
-                <Dropdown 
-                    items={DROPDOWN_ITEMS}
-                    onChange={changeTerm}
-                    defaultSelected={getReadableDropdownItem(activeTerm)}
-                />
+                <div className={styles['top-header-main']}>
+                    <h2>
+                        {header}
+                    </h2>
+                    <Dropdown 
+                        items={DROPDOWN_ITEMS}
+                        onChange={changeTerm}
+                        defaultSelected={getReadableDropdownItem(activeTerm)}
+                    />
+                </div>
+
+                <button onClick={() => setExpanded(!expanded)}>
+                    {expanded ? 'Show less' : 'Show more'}
+                </button>
             </div>
             <div className={styles['top-items']}>
                 {!items && (

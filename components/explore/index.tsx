@@ -1,13 +1,17 @@
 import styles from '../../styles/Explore.module.scss';
+import { ParamTabs } from '../param-tabs';
 import { ExploreHeader } from "./ExploreHeader"
 import { ExploreMain } from './ExploreMain';
-import { ExploreTabs } from './ExploreTabs';
 
+const EXPLORE_TABS = ['Songs', 'Artists'];
 export const Explore = () => {
     return(
         <main className={styles['container']}>
             <ExploreHeader />
-            <ExploreTabs />
+            <ParamTabs 
+                tabs={EXPLORE_TABS}
+                defaultActive={EXPLORE_TABS[0]}
+            />
             <ExploreMain />
         </main>
     )

@@ -45,12 +45,14 @@ export const Dropdown: React.FC<{
 
             {open && (
                 <ul>
-                    <Input 
-                        label={'Search'}
-                        name="search"
-                        containerClassName={styles['search']}
-                        onChange={setSearch}
-                    />
+                    {allowSearch && (
+                        <Input 
+                            label={'Search'}
+                            name="search"
+                            containerClassName={styles['search']}
+                            onChange={setSearch}
+                        />
+                    )}
                     {selectableItems.map(item => (
                         <li 
                             onClick={() => selectItem(item)}

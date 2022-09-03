@@ -1,7 +1,11 @@
+import { ProfileRecommendationsHeader } from "./ProfileRecommendationsHeader"
+import { ProfileRecommendationsItems } from "./ProfileRecommendationsItems"
+
 export const ProfileRecommendations = () => {
     return(
-        <div>
-            recs
-        </div>
+        <>
+            <ProfileRecommendationsHeader />
+            <ProfileRecommendationsItems />
+        </>
     )
 }

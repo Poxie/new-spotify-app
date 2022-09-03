@@ -9,6 +9,12 @@ export type ProfileState = {
         artists: string;
         tracks: string;
     }
+    recommendations: {
+        trackTerm: string;
+        artistTerm: string;
+        items: Track[];
+        loading: boolean;
+    }
     recentlyPlayed: Track[];
     tokens: {[type: string]: {
         token: string;

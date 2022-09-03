@@ -9,6 +9,12 @@ const initialState = {
         artists: 'long_term',
         tracks: 'long_term'
     },
+    recommendations: {
+        trackTerm: 'long_term',
+        artistTerm: 'long_term',
+        items: [],
+        loading: true
+    },
     recentlyPlayed: [],
     tokens: {}
 } as ProfileState;
@@ -66,6 +72,28 @@ export const profileReducer: ProfileReducer = (state=initialState, action) => {
                 activeTerm: {
                     ...state.activeTerm,
                     [type]: term
+                }
+            }
+        }
+        case 'SET_PROFILE_RECOMMENDATION_TERM': {
+            const { type, term } = action.payload;
+
+            return {
+                ...state,
+                recommendations: {
+                    ...state.recommendations,
+                    loading: true,
+                    [type]: term
+                }
+            }
+        }
+        case 'SET_PROFILE_RECOMMENDATIONS': {
+            return {
+                ...state,
+                recommendations: {
+                    ...state.recommendations,
+                    items: action.payload,
+                    loading: false
                 }
             }
         }

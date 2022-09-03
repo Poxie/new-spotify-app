@@ -37,3 +37,16 @@ export const setProfileActiveTerm = (payload: {
     type: 'SET_PROFILE_ACTIVE_TERM',
     payload
 })
+
+export const setProfileRecommendationsTerm = (payload: {
+    type: 'artistTerm' | 'trackTerm';
+    term: string;
+}) => ({
+    type: 'SET_PROFILE_RECOMMENDATION_TERM',
+    payload
+})
+
+export const setProfileRecommendations = (items: Track[]) => ({
+    type: 'SET_PROFILE_RECOMMENDATIONS',
+    payload: items
+})

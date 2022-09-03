@@ -11,6 +11,7 @@ export const NavbarHeader = () => {
                         src={'/icons/site-icon.svg'} 
                         layout={'fill'} 
                         objectFit={'cover'} 
+                        alt="Website icon"
                     />
                 </div>
                 <span>

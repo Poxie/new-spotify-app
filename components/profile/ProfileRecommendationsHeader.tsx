@@ -8,12 +8,18 @@ import { useAppSelector } from '../../redux/store';
 import styles from '../../styles/Profile.module.scss';
 import { Dropdown } from '../dropdown';
 
+const getReadableDropdownItem = (id: string) => {
+    if(id === 'long_term') return 'All time'
+    else if(id === 'medium_term') return 'Last 6 months'
+    else return 'Last 4 weeks';
+}
+
 const TABS = ['All time', 'Last 6 months', 'Last 4 weeks'];
 export const ProfileRecommendationsHeader = () => {
     const { get } = useAuth();
     const dispatch = useDispatch();
-    const token = useAppSelector(selectAuthToken);
-    const loading = useAppSelector(selectProfileRecommendationsLoading);
+    const artistTerm = useAppSelector(selectProfileRecommendationsArtistTerm); 
+    const trackTerm = useAppSelector(selectProfileRecommendationsTrackTerm);
 
     const changeTerm = (type: 'artistTerm' | 'trackTerm', term: string) => {
         let prefix = 'long';
@@ -34,11 +40,13 @@ export const ProfileRecommendationsHeader = () => {
                 <Dropdown 
                     items={TABS}
                     onChange={term => changeTerm('artistTerm', term)}
+                    defaultSelected={getReadableDropdownItem(artistTerm)}
                 />
                 and songs
                 <Dropdown 
                     items={TABS}
                     onChange={term => changeTerm('trackTerm', term)}
+                    defaultSelected={getReadableDropdownItem(trackTerm)}
                 />
             </h2>
         </div>

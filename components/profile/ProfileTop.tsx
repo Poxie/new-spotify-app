@@ -6,12 +6,20 @@ import { Artist, Track } from "../../types"
 import { Dropdown } from '../dropdown';
 import { ProfileItem } from './ProfileItem';
 
-const DROPDOWN_ITEMS = ['All time', 'Last 6 months', 'Last 4 weeks']
+const DROPDOWN_ITEMS = ['All time', 'Last 6 months', 'Last 4 weeks'];
+
+const getReadableDropdownItem = (id: string) => {
+    if(id === 'long_term') return 'All time'
+    else if(id === 'medium_term') return 'Last 6 months'
+    else return 'Last 4 weeks';
+}
+
 export const ProfileTop: React.FC<{
     header: string;
     items: (Artist | Track)[];
     type: 'artists' | 'tracks';
-}> = ({ header, items, type }) => {
+    activeTerm: string;
+}> = ({ header, items, type, activeTerm }) => {
     const [expanded, setExpanded] = useState(false);
     const dispatch = useDispatch();
 
@@ -39,7 +47,7 @@ export const ProfileTop: React.FC<{
                 <Dropdown 
                     items={DROPDOWN_ITEMS}
                     onChange={changeTerm}
-                    defaultSelected={DROPDOWN_ITEMS[0]}
+                    defaultSelected={getReadableDropdownItem(activeTerm)}
                 />
             </div>
             <div className={styles['top-items']}>

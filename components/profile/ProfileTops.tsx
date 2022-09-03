@@ -40,11 +40,13 @@ export const ProfileTops = () => {
             <ProfileTop 
                 items={artists}
                 type={'artists'}
+                activeTerm={activeArtistTerm}
                 header={'Your most played artists'}
             />
             <ProfileTop 
                 items={tracks}
                 type={'tracks'}
+                activeTerm={activeTrackTerm}
                 header={'Your most played tracks'}
             />
         </div>

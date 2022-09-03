@@ -2,10 +2,20 @@ import styles from '../../styles/Profile.module.scss';
 import Image from "next/image";
 
 export const ProfileItem: React.FC<{
-    image: string;
-    name: string;
-    uri: string;
-}> = ({ name, uri, image }) => {
+    image?: string;
+    name?: string;
+    uri?: string;
+    loading?: boolean;
+}> = ({ name, uri, image, loading }) => {
+    if(loading) {
+        return(
+            <div className={styles['top-item']}>
+                <div className={styles['top-image']} />
+                <div className={styles['top-item-name-loading']} />
+            </div>
+        )
+    }
+
     return(
         <div className={styles['top-item']}>
             <a 
@@ -13,7 +23,7 @@ export const ProfileItem: React.FC<{
                 href={uri}
             >
                 <Image 
-                    src={image}
+                    src={image || ''}
                     layout={'fill'}
                     objectFit={'cover'}
                 />

@@ -31,10 +31,22 @@
     aspect-ratio: 1;
     position: relative;
     border-radius: var(--border-radius-primary);
+    background-color: var(--background-tertiary);
     overflow: hidden;
     display: block;
 }
+.top-item-name-loading {
+    height: 19px;
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 5px;
+    background-color: var(--background-quaternary);
+    border-radius: var(--border-radius-primary);
+}
 .top-item-name {
     margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: block;
 }

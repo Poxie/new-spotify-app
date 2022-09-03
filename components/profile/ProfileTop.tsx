@@ -43,6 +43,15 @@ export const ProfileTop: React.FC<{
                 />
             </div>
             <div className={styles['top-items']}>
+                {!items && (
+                    Array.from(Array(6)).map((_, key) => (
+                        <ProfileItem 
+                            loading={true}
+                            key={key}
+                        />
+                    ))
+                )}
+
                 {items?.slice(0, showAmount)?.map(item => {
                     // Image has different location for artist and track
                     const image = item.type === 'artist' ?

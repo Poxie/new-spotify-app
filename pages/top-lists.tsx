@@ -20,7 +20,7 @@ export default function topLists() {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(({ dispatch, getState }) => async () => {
-    const encodedCredentials = Buffer.from(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64');
+    const encodedCredentials = Buffer.from(process.env.NEXT_PUBLIC_CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64');
     const data = await fetch(`${process.env.NEXT_PUBLIC_TOKEN_ENDPOINT}?grant_type=client_credentials`, {
         method: 'POST',
         headers: {

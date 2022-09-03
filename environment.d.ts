@@ -5,10 +5,11 @@ declare global {
             NEXT_PUBLIC_WEBSITE_NAME: string;
             NEXT_PUBLIC_API_ENDPOINT: string;
             NEXT_PUBLIC_ACCOUNT_ENDPOINT: string;
+            NEXT_PUBLIC_AUTH_ENDPOINT: string;
             NEXT_PUBLIC_TOKEN_ENDPOINT: string;
             NEXT_PUBLIC_REDIRECT_URI: string;
             NEXT_PUBLIC_GLOBAL_PLAYLIST_ID: string;
-            CLIENT_ID: string;
+            NEXT_PUBLIC_CLIENT_ID: string;
             CLIENT_SECRET: string;
 
             MAIL_HOST: string;

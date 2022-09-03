@@ -1,0 +1,40 @@
+.container {
+    width: var(--width-main);
+    max-width: var(--width-max);
+    margin: 0 auto;
+    padding: 100px 0;
+}
+.tops {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h2 {
+        font-size: 30px;
+    }
+}
+.top-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.top-items {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(min(160px, 100%), 1fr));
+}
+.top-item {
+    text-align: center;
+}
+.top-image {
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: var(--border-radius-primary);
+    overflow: hidden;
+    display: block;
+}
+.top-item-name {
+    margin-top: 5px;
+    display: block;
+}

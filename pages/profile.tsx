@@ -1,8 +1,10 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Profile } from "../components/profile/Profile";
 import { useAuth } from "../contexts/auth/AuthProvider";
-import { setProfile } from "../redux/profile/action";
+import { setProfile, setProfileArtists, setProfileTracks } from "../redux/profile/action";
 import { selectProfileToken } from "../redux/profile/hooks"
 import { useAppSelector } from "../redux/store"
 
@@ -28,5 +30,15 @@ export default function profile() {
             });
     }, [tokenData?.token]);
 
-    return <div></div>
+    return(
+        <>
+        <Head>
+            <title>
+                Profile - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
+            </title>
+        </Head>
+        
+        <Profile />
+        </>
+    )
 }

@@ -5,6 +5,10 @@ const initialState = {
     profile: null,
     artists: {},
     tracks: {},
+    activeTerm: {
+        artists: 'long_term',
+        tracks: 'long_term'
+    },
     recentlyPlayed: [],
     tokens: {}
 } as ProfileState;
@@ -51,6 +55,17 @@ export const profileReducer: ProfileReducer = (state=initialState, action) => {
                 tracks: {
                     ...state.tracks,
                     [type]: items
+                }
+            }
+        }
+        case 'SET_PROFILE_ACTIVE_TERM': {
+            const { type, term } = action.payload;
+
+            return {
+                ...state,
+                activeTerm: {
+                    ...state.activeTerm,
+                    [type]: term
                 }
             }
         }

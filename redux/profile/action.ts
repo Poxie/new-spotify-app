@@ -29,3 +29,11 @@ export const setProfileTracks = (payload: {
     type: 'SET_PROFILE_TRACKS',
     payload
 })
+
+export const setProfileActiveTerm = (payload: {
+    type: 'artists' | 'tracks',
+    term: string;
+}) => ({
+    type: 'SET_PROFILE_ACTIVE_TERM',
+    payload
+})

@@ -5,6 +5,10 @@ export type ProfileState = {
     profile: null | Profile;
     artists: {[key: string]: Artist[]};
     tracks: {[key: string]: Track[]};
+    activeTerm: {
+        artists: string;
+        tracks: string;
+    }
     recentlyPlayed: Track[];
     tokens: {[type: string]: {
         token: string;

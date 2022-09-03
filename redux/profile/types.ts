@@ -1,3 +1,4 @@
+import { AnyAction } from "@reduxjs/toolkit";
 import { Artist, Profile, Track } from "../../types";
 
 export type ProfileState = {
@@ -10,3 +11,4 @@ export type ProfileState = {
         refresh_token: string;
     } | undefined};
 };
+export type ProfileReducer = (state: ProfileState, action: AnyAction) => ProfileState

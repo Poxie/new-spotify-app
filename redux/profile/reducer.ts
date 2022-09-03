@@ -1,5 +1,5 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { ProfileState } from "./types";
+import { ProfileReducer, ProfileState } from "./types";
 
 const initialState = {
     profile: null,
@@ -9,7 +9,7 @@ const initialState = {
     tokens: {}
 } as ProfileState;
 
-export const profileReducer = (state=initialState, action: AnyAction) => {
+export const profileReducer: ProfileReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'SET_PROFILE': {
             return {
@@ -28,6 +28,28 @@ export const profileReducer = (state=initialState, action: AnyAction) => {
                         ...state.tokens[type],
                         token
                     }
+                }
+            }
+        }
+        case 'SET_PROFILE_ARTISTS': {
+            const { type, items } = action.payload;
+            
+            return {
+                ...state,
+                artists: {
+                    ...state.artists,
+                    [type]: items
+                }
+            }
+        }
+        case 'SET_PROFILE_TRACKS': {
+            const { type, items } = action.payload;
+
+            return {
+                ...state,
+                tracks: {
+                    ...state.tracks,
+                    [type]: items
                 }
             }
         }

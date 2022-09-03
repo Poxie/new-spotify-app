@@ -14,6 +14,7 @@ const getReadableDropdownItem = (id: string) => {
     else return 'Last 4 weeks';
 }
 
+const DEFAULT_ITEM_AMOUNT = 6;
 export const ProfileTop: React.FC<{
     header: string;
     items: (Artist | Track)[];
@@ -37,7 +38,7 @@ export const ProfileTop: React.FC<{
         }))
     }
 
-    const showAmount = expanded ? items?.length || 6 : 6;
+    const showAmount = expanded ? items?.length || DEFAULT_ITEM_AMOUNT : DEFAULT_ITEM_AMOUNT;
     return(
         <div className={styles['top']}>
             <div className={styles['top-header']}>

@@ -15,6 +15,7 @@
         li {
             padding: var(--item-padding);
             cursor: pointer;
+            white-space: nowrap;
 
             &:hover {
                 background-color: var(--background-quaternary);

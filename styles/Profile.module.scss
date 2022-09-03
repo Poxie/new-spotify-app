@@ -72,7 +72,7 @@
 .recommendation-items {
     display: grid;
     gap: 15px;
-    grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
 }
 
 @media (max-width: 700px) {

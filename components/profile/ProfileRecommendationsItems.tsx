@@ -8,6 +8,7 @@ import { setProfileArtists, setProfileRecommendations, setProfileTracks } from '
 import { useAuth } from '../../contexts/auth/AuthProvider';
 import { selectAuthToken } from '../../redux/auth/selectors';
 
+const RECOMMENDED_TRACK_AMOUNT = 20;
 export const ProfileRecommendationsItems = () => {
     const token = useAppSelector(selectAuthToken);
     const items = useAppSelector(selectProfileRecommendations);
@@ -49,7 +50,7 @@ export const ProfileRecommendationsItems = () => {
 
         if(fetching.current) return;
         fetching.current = true;
-        fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/recommendations?seed_tracks=${seedTracks}&seed_artists=${seedArtists}&seed_genres=${seedGenres}&limit=30`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/recommendations?seed_tracks=${seedTracks}&seed_artists=${seedArtists}&seed_genres=${seedGenres}&limit=${RECOMMENDED_TRACK_AMOUNT}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/x-www-form-urlencoded'

@@ -29,6 +29,7 @@ const reducer = (state: ReturnType<typeof combinedReducer>, action: AnyAction) =
         // We dont want to override those values
         delete action.payload.explore;
         delete action.payload.topLists;
+        delete action.payload.profile;
 
         const nextState = {
             ...state, // use previous state

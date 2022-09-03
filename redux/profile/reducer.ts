@@ -26,7 +26,8 @@ export const profileReducer: ProfileReducer = (state=initialState, action) => {
                     ...state.tokens,
                     [type]: {
                         ...state.tokens[type],
-                        token
+                        token,
+                        refresh_token
                     }
                 }
             }

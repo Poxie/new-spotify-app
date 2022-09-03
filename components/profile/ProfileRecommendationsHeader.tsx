@@ -1,9 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../../contexts/auth/AuthProvider';
-import { selectAuthToken } from '../../redux/auth/selectors';
-import { setProfileArtists, setProfileRecommendations, setProfileRecommendationsTerm, setProfileTracks } from '../../redux/profile/action';
-import { selectProfileRecommendationsArtistTerm, selectProfileRecommendationsLoading, selectProfileRecommendationsTrackTerm } from '../../redux/profile/hooks';
+import { setProfileRecommendationsTerm } from '../../redux/profile/action';
+import { selectProfileRecommendationsArtistTerm, selectProfileRecommendationsTrackTerm } from '../../redux/profile/hooks';
 import { useAppSelector } from '../../redux/store';
 import styles from '../../styles/Profile.module.scss';
 import { Dropdown } from '../dropdown';

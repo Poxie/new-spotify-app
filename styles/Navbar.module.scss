@@ -48,6 +48,10 @@
     gap: var(--gap);
     display: flex;
     align-items: center;
+
+    .button {
+        font-size: 13px;
+    }
 }
 .tabs {
     display: flex;

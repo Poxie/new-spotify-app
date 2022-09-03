@@ -28,7 +28,7 @@ export const NavbarRight = () => {
             transition={{ bounce: false }}
         >
             <NavbarTabs />
-            <Button className={styles.button}>
+            <Button className={styles.button} href={'/login'}>
                 Login with Spotify
             </Button>
         </motion.div>

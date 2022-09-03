@@ -14,11 +14,14 @@ import { topListsReducer } from './top-lists/reducer';
 import { TopListsState } from './top-lists/types';
 import { ExploreState } from './explore/types';
 import { exploreReducer } from './explore/reducer';
+import { ProfileState } from './profile/types';
+import { profileReducer } from './profile/reducer';
 
 const combinedReducer = combineReducers({
     auth: authReducer,
     topLists: topListsReducer,
-    explore: exploreReducer
+    explore: exploreReducer,
+    profile: profileReducer
 });
 
 const reducer = (state: ReturnType<typeof combinedReducer>, action: AnyAction) => {
@@ -48,6 +51,7 @@ export type RootState = {
     auth: AuthState;
     topLists: TopListsState;
     explore: ExploreState;
+    profile: ProfileState;
 }
 
 // Hooks

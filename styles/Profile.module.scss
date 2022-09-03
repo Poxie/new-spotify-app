@@ -59,3 +59,16 @@
     text-overflow: ellipsis;
     display: block;
 }
+
+@media (max-width: 700px) {
+    .top-header, .top-header-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+@media (max-width: 400px) {
+    .top-header h2 {
+        font-size: 24px;
+    }
+}

@@ -23,6 +23,7 @@ export const TrackPlayerButton: React.FC<{
                 src={`/icons/${icon}.svg`}
                 width={IMAGE_SIZE}
                 height={IMAGE_SIZE}
+                alt={ariaLabel || ''}
             />
         </button>
     )

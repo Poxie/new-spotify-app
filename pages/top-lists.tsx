@@ -12,6 +12,7 @@ export default function topLists() {
             <title>
                 Top Lists - {process.env.NEXT_PUBLIC_WEBSITE_NAME} 
             </title>
+            <meta name="description" content="View any country's most played songs on Spotify." />
         </Head>
         
         <TopLists />

@@ -5,9 +5,14 @@ import Button from '../button';
 import { NavbarTabs } from './NavbarTabs';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { useAppSelector } from '../../redux/store';
+import { selectProfile } from '../../redux/profile/hooks';
+import { NavbarLoginButton } from './NavbarLoginButton';
+import { NavbarProfile } from './NavbarProfile';
 
 export const NavbarRight = () => {
     const router = useRouter();
+    const profile = useAppSelector(selectProfile);
     const [open, setOpen] = useState(false);
 
     // Closing navigation on route change
@@ -28,9 +33,12 @@ export const NavbarRight = () => {
             transition={{ bounce: false }}
         >
             <NavbarTabs />
-            <Button className={styles.button} href={'/login'}>
-                Login with Spotify
-            </Button>
+
+            {!profile ? (
+                <NavbarLoginButton />
+            ) : (
+                <NavbarProfile />
+            )}
         </motion.div>
 
         <button 

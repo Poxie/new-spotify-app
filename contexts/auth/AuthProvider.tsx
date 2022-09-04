@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { selectAuthToken } from '../../redux/auth/selectors';
-import { setProfileToken } from '../../redux/profile/action';
+import { setProfile, setProfileToken } from '../../redux/profile/action';
 import { selectProfileToken } from '../../redux/profile/hooks';
 import { useAppSelector } from '../../redux/store';
 import { AuthContext as AuthContextType } from './types';
@@ -32,6 +32,17 @@ export const AuthProvider: React.FC<{ children: any }> = ({ children }) => {
             refresh_token: localStorage.getItem('refreshToken') || null
         }));
     }, []);
+
+    // Getting profile on mount
+    useEffect(() => {
+        if(!tokenData?.token) return;
+
+        // Getting and storing profile
+        get('me')
+            .then(profile => {
+                dispatch(setProfile(profile));
+            });
+    }, [tokenData?.token]);
 
     // Function to get auth related content
     const get: AuthContextType['get'] = useCallback(async (query, external) => {

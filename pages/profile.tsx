@@ -12,7 +12,6 @@ import { useAppSelector, wrapper } from "../redux/store"
 export default function profile() {
     const { get } = useAuth();
     const router = useRouter();
-    const dispatch = useDispatch();
     const tokenData = useAppSelector(state => selectProfileToken(state, 'access_token'));
     
     useEffect(() => {
@@ -23,12 +22,6 @@ export default function profile() {
             router.replace('/login');
             return;
         }
-
-        // Else get profile data
-        get('me')
-            .then(profile => {
-                dispatch(setProfile(profile));
-            });
     }, [tokenData?.token]);
 
     return(

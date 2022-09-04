@@ -50,3 +50,8 @@ export const setProfileRecommendations = (items: Track[]) => ({
     type: 'SET_PROFILE_RECOMMENDATIONS',
     payload: items
 })
+
+export const pushProfileRecommendations = (items: Track[]) => ({
+    type: 'PUSH_PROFILE_RECOMMENDATIONS',
+    payload: items
+})

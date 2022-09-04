@@ -1,4 +1,5 @@
 import { AnyAction } from "@reduxjs/toolkit";
+import { Track } from "../../types";
 import { ProfileReducer, ProfileState } from "./types";
 
 const initialState = {
@@ -94,6 +95,19 @@ export const profileReducer: ProfileReducer = (state=initialState, action) => {
                     ...state.recommendations,
                     items: action.payload,
                     loading: false
+                }
+            }
+        }
+        case 'PUSH_PROFILE_RECOMMENDATIONS': {
+            // Making sure duplicates arent being added
+            const prevIds = state.recommendations.items.map(item => item.id);
+            const addedItems = action.payload.filter((item: Track) => !prevIds.includes(item.id));
+
+            return {
+                ...state,
+                recommendations: {
+                    ...state.recommendations,
+                    items: [...state.recommendations.items, ...addedItems]
                 }
             }
         }

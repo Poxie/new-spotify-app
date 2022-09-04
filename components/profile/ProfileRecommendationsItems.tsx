@@ -4,11 +4,12 @@ import { useAppSelector } from "../../redux/store"
 import { TrackPlayer } from "../track-player/TrackPlayer";
 import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { setProfileArtists, setProfileRecommendations, setProfileTracks } from '../../redux/profile/action';
+import { pushProfileRecommendations, setProfileArtists, setProfileRecommendations, setProfileTracks } from '../../redux/profile/action';
 import { useAuth } from '../../contexts/auth/AuthProvider';
 import { selectAuthToken } from '../../redux/auth/selectors';
 
 const RECOMMENDED_TRACK_AMOUNT = 20;
+const SCROLL_FROM_BOTTOM = 100;
 export const ProfileRecommendationsItems = () => {
     const token = useAppSelector(selectAuthToken);
     const items = useAppSelector(selectProfileRecommendations);
@@ -19,6 +20,7 @@ export const ProfileRecommendationsItems = () => {
     const fetching = useRef(false);
     const dispatch = useDispatch();
     const { get } = useAuth();
+    const ref = useRef<HTMLDivElement>(null);
 
     // Function to get recommendations
     const getRecommendations = useCallback(async () => {
@@ -35,6 +37,34 @@ export const ProfileRecommendationsItems = () => {
             .then(res => res.json())
             .then(({ tracks }) => tracks);
     }, [tracks, artists, token]);
+
+    // Showing more results on scroll
+    useEffect(() => {
+        const checkScroll = () => {
+            if(!ref.current) return;
+
+            const height = ref.current.getBoundingClientRect().height;
+            const fromTop = ref.current.offsetTop;
+
+            const bottom = height + fromTop - SCROLL_FROM_BOTTOM;
+            const scroll = window.scrollY + window.innerHeight
+        
+            console.log(bottom, scroll);
+            // If meet threshold, show more items
+            if(scroll >= bottom) {
+                if(fetching.current) return;
+                fetching.current = true;
+                getRecommendations()
+                    .then(tracks => {
+                        dispatch(pushProfileRecommendations(tracks));
+                        fetching.current = false;
+                    })
+            }
+        }
+
+        document.addEventListener('scroll', checkScroll);
+        return () => document.removeEventListener('scroll', checkScroll);
+    }, [tracks, artists]);
 
     useEffect(() => {
         dispatch(setProfileRecommendations([]));
@@ -74,7 +104,7 @@ export const ProfileRecommendationsItems = () => {
     }, [artistTerm, trackTerm, tracks, artists, get]);
 
     return(
-        <div className={styles['recommendation-items']}>
+        <div className={styles['recommendation-items']} ref={ref}>
             {!items?.length && (
                 Array.from(Array(30)).map((_, key) => (
                     <TrackPlayer 

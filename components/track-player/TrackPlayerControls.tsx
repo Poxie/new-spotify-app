@@ -12,11 +12,15 @@ export const TrackPlayerControls: React.FC<{
     const [playing, setPlaying] = useState(false);
     const [current, setCurrent] = useState(0);
     const [errored, setErrored] = useState(false);
-    const audio = useRef(new Audio(previewURL));
+    const audio = useRef<HTMLAudioElement | null>(null);
     const container = useRef<HTMLDivElement>(null);
     const mouseDown = useRef(false);
 
     const play = useCallback(() => {
+        if(!audio.current) {
+            audio.current = new Audio(previewURL);
+        }
+
         if(!playing) {
             audio.current.play()
                 .then(() => {
@@ -36,6 +40,8 @@ export const TrackPlayerControls: React.FC<{
     }, [audio.current, playing]);
 
     useEffect(() => {
+        if(!audio.current) return;
+
         const onEnd = () => {
             setPlaying(false);
             setCurrent(0);
@@ -43,6 +49,7 @@ export const TrackPlayerControls: React.FC<{
 
         audio.current.addEventListener('ended', onEnd);
         return () => {
+            if(!audio.current) return;
             audio.current.removeEventListener('ended', onEnd);
             audio.current.pause();
         }

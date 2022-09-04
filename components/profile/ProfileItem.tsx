@@ -19,13 +19,15 @@ export const ProfileItem: React.FC<{
     return(
         <div className={styles['top-item']}>
             <a 
-                className={styles['top-image']} 
+                className={styles['top-image']}
+                aria-label={`Go to ${name}`}
                 href={uri}
             >
                 <Image 
                     src={image || ''}
                     layout={'fill'}
                     objectFit={'cover'}
+                    alt={`${name} image preview`}
                 />
             </a>
             <a 

@@ -22,12 +22,14 @@ export const HomeHeader = () => {
                 <div className={styles['header-buttons']}>
                     <Button 
                         className={styles['header-button']}
+                        href={'/profile'}
                     >
                         View my stats
                     </Button>
                     <Button 
                         className={styles['header-button']} 
                         type={'secondary'}
+                        href={'/explore'}
                     >
                         Explore mode
                     </Button>

@@ -106,7 +106,7 @@ export const ProfileRecommendationsItems = () => {
     return(
         <div className={styles['recommendation-items']} ref={ref}>
             {!items?.length && (
-                Array.from(Array(30)).map((_, key) => (
+                Array.from(Array(RECOMMENDED_TRACK_AMOUNT)).map((_, key) => (
                     <TrackPlayer 
                         loading={true}
                         key={key}

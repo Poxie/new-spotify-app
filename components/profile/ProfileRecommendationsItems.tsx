@@ -9,7 +9,7 @@ import { useAuth } from '../../contexts/auth/AuthProvider';
 import { selectAuthToken } from '../../redux/auth/selectors';
 
 const RECOMMENDED_TRACK_AMOUNT = 20;
-const SCROLL_FROM_BOTTOM = 100;
+const SCROLL_FROM_BOTTOM = 500;
 export const ProfileRecommendationsItems = () => {
     const token = useAppSelector(selectAuthToken);
     const items = useAppSelector(selectProfileRecommendations);
@@ -49,7 +49,6 @@ export const ProfileRecommendationsItems = () => {
             const bottom = height + fromTop - SCROLL_FROM_BOTTOM;
             const scroll = window.scrollY + window.innerHeight
         
-            console.log(bottom, scroll);
             // If meet threshold, show more items
             if(scroll >= bottom) {
                 if(fetching.current) return;
@@ -66,6 +65,7 @@ export const ProfileRecommendationsItems = () => {
         return () => document.removeEventListener('scroll', checkScroll);
     }, [tracks, artists]);
 
+    // Displaying recommendations on change and on mount
     useEffect(() => {
         dispatch(setProfileRecommendations([]));
 

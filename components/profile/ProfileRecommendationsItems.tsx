@@ -1,5 +1,5 @@
 import styles from '../../styles/Profile.module.scss';
-import { selectProfileArtistsByTerm, selectProfileRecommendations, selectProfileRecommendationsArtistTerm, selectProfileRecommendationsTrackTerm, selectProfileTracksByTerm } from "../../redux/profile/hooks"
+import { selectProfileArtistsByTerm, selectProfileRecommendations, selectProfileRecommendationsArtistTerm, selectProfileRecommendationsTrackTerm, selectProfileToken, selectProfileTracksByTerm } from "../../redux/profile/hooks"
 import { useAppSelector } from "../../redux/store"
 import { TrackPlayer } from "../track-player/TrackPlayer";
 import { useCallback, useEffect, useRef } from 'react';
@@ -12,6 +12,7 @@ const RECOMMENDED_TRACK_AMOUNT = 20;
 const SCROLL_FROM_BOTTOM = 500;
 export const ProfileRecommendationsItems = () => {
     const token = useAppSelector(selectAuthToken);
+    const profileToken = useAppSelector(state => selectProfileToken(state, 'access_token'));
     const items = useAppSelector(selectProfileRecommendations);
     const trackTerm = useAppSelector(selectProfileRecommendationsTrackTerm);
     const artistTerm = useAppSelector(selectProfileRecommendationsArtistTerm);
@@ -67,6 +68,9 @@ export const ProfileRecommendationsItems = () => {
 
     // Displaying recommendations on change and on mount
     useEffect(() => {
+        // Making sure request arent being made before token initalization
+        if(!token || !profileToken) return;
+
         dispatch(setProfileRecommendations([]));
 
         // If tracks dont already exist in store, fetch and store
@@ -101,7 +105,7 @@ export const ProfileRecommendationsItems = () => {
                 dispatch(setProfileRecommendations(tracks));
                 fetching.current = false;
             })
-    }, [artistTerm, trackTerm, tracks, artists, get]);
+    }, [artistTerm, trackTerm, tracks, artists, get, token, profileToken]);
 
     return(
         <div className={styles['recommendation-items']} ref={ref}>

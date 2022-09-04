@@ -32,13 +32,17 @@ export const TopListTrack: React.FC<Partial<Track> & {
         )
     }
     
+    // Creating the animation delay
     const firstDigit = parseInt(index.toString().slice(0,1));
     const prevIndex = parseInt(index.toString().slice(1,2)) === 0 ? (firstDigit - 1) * 10 : firstDigit * 10;
     const delay = ((index - prevIndex) * .05);
 
     const artist = artists[0];
     return(
-        <li className={className} style={{ animationDelay: `${delay}s` }}>
+        <li 
+            className={className} 
+            style={{ animationDelay: `${delay}s` }}
+        >
             <span className={styles['track-index']}>
                 {index}
             </span>
@@ -50,7 +54,7 @@ export const TopListTrack: React.FC<Partial<Track> & {
                         href={uri}
                     >
                         <Image 
-                            src={album.images[0].url}
+                            src={album.images[2]?.url}
                             layout={'fill'}
                             objectFit={'cover'}
                             alt={`${album.name} album image`}

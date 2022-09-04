@@ -4,13 +4,13 @@ import styles from '../../styles/Navbar.module.scss';
 
 const tabs = ['Top Lists', 'Explore', 'Profile'];
 export const NavbarTabs = () => {
-    const asPath = useRouter().asPath;
+    const route = useRouter().route;
 
     return(
         <ul className={styles.tabs}>
             {tabs.map(tab => {
                 const path = `/${tab.toLowerCase().replaceAll(' ', '-')}`;
-                const active = path === asPath;
+                const active = path === route;
 
                 const className = [
                     styles['tab'],

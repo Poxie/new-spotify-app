@@ -18,12 +18,7 @@ export const HomeTile: React.FC<TileType> = ({ title, content, img, icon, path, 
                     ariaLabel={buttonText}
                     href={path} 
                 >
-                    <Image 
-                        src={`/icons/${icon}.svg`}
-                        width={20}
-                        height={20}
-                        alt={`Go to ${buttonText} icon`}
-                    />
+                    {icon}
                     {buttonText}
                 </Button>
             </div>

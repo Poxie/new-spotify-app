@@ -3,6 +3,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from "next/image"
 import { TrackPlayerButton } from './TrackPlayerButton';
 import { useToast } from '../../contexts/toast/ToastProvider';
+import { ShuffleIcon } from '../../assets/icons/ShuffleIcon';
+import { ReverseIcon } from '../../assets/icons/ReverseIcon';
+import { PauseIcon } from '../../assets/icons/PauseIcon';
+import { PlayIcon } from '../../assets/icons/PlayIcon';
+import { RepeatIcon } from '../../assets/icons/RepeatIcon';
 
 const DURATION = 30 * 1000;
 export const TrackPlayerControls: React.FC<{
@@ -134,26 +139,26 @@ export const TrackPlayerControls: React.FC<{
             </div>
             <div className={styles['control-buttons']}>
                 <TrackPlayerButton 
-                    icon={'shuffle'}
+                    icon={<ShuffleIcon />}
                     ariaHidden={true}
                 />
                 <TrackPlayerButton 
-                    icon={'reverse'}
+                    icon={<ReverseIcon />}
                     ariaHidden={true}
                 />
                 <TrackPlayerButton 
-                    icon={playing ? 'pause' : 'play'}
+                    icon={playing ? <PauseIcon /> : <PlayIcon />}
                     ariaLabel={playing ? 'Pause preview' : 'Play preview'}
                     onClick={play}
                     style={{ pointerEvents: errored ? 'none' : 'all' }}
                 />
                 <TrackPlayerButton 
-                    icon={'reverse'}
+                    icon={<ReverseIcon />}
                     ariaHidden={true}
                     style={{ transform: 'rotate(180deg)' }}
                 />
                 <TrackPlayerButton 
-                    icon={'repeat'}
+                    icon={<RepeatIcon />}
                     ariaHidden={true}
                 />
             </div>

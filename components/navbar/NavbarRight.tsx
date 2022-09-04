@@ -9,6 +9,7 @@ import { useAppSelector } from '../../redux/store';
 import { selectProfile } from '../../redux/profile/hooks';
 import { NavbarLoginButton } from './NavbarLoginButton';
 import { NavbarProfile } from './NavbarProfile';
+import { HamIcon } from '../../assets/icons/HamIcon';
 
 export const NavbarRight = () => {
     const router = useRouter();
@@ -45,11 +46,7 @@ export const NavbarRight = () => {
             className={styles.ham} 
             onClick={() => setOpen(!open)}
         >
-            <Image 
-                src={'/icons/ham.svg'}
-                width={32}
-                height={32}
-            />
+            <HamIcon />
         </button>
         </>
     )

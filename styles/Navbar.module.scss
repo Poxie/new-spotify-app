@@ -10,6 +10,11 @@
         .tab {
             color: var(--text-light-primary);
         }
+        .ham {
+            svg {
+                fill: var(--text-light-primary);
+            }
+        }
     }
 }
 .content {
@@ -32,17 +37,6 @@
         margin-top: -3px;
     }
 }
-.header-image {
-    --dimensions: 40px;
-    
-    width: var(--dimensions);
-    height: var(--dimensions);
-    position: relative;
-
-    svg {
-        display: block;
-    }
-}
 .right {
     --gap: 20px;
     gap: var(--gap);
@@ -59,6 +53,7 @@
 }
 .tab {
     color: var(--text-secondary);
+    transition: color .2s;
 
     &.active, &:hover {
         color: var(--text-primary);
@@ -66,6 +61,12 @@
 }
 .ham {
     display: none;
+
+    svg {
+        fill: var(--text-primary);
+        width: 30px;
+        height: 30px;
+    }
 }
 
 @media (max-width: 700px) {
@@ -88,6 +89,13 @@
     .tabs {
         flex-direction: column;
         text-align: center;
+    }
+    .tab {
+        color: var(--text-light-secondary);
+
+        &.active, &:hover {
+            color: var(--text-light-primary);
+        }
     }
     .ham {
         display: block;

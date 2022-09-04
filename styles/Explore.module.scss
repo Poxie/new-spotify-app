@@ -226,3 +226,11 @@
         flex-direction: column;
     }
 }
+@media (max-width: 500px) {
+    .container {
+        padding: 100px 0;
+        h1 {
+            font-size: 36px;
+        }
+    }
+}

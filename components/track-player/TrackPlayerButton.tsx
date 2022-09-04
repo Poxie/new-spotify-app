@@ -10,21 +10,25 @@ export const TrackPlayerButton: React.FC<{
     ariaHidden?: boolean;
     style?: CSSProperties;
 }> = React.memo(({ icon, onClick, style, ariaLabel, ariaHidden=false }) => {
+    const image = (
+        <Image 
+            src={`/icons/${icon}.svg`}
+            width={IMAGE_SIZE}
+            height={IMAGE_SIZE}
+            alt={ariaLabel || ''}
+            aria-hidden={ariaHidden}
+            style={style}
+        />
+    )
+    if(ariaHidden) return image;
+
     return(
         <button 
             aria-label={ariaLabel}
             aria-hidden={ariaHidden}
             onClick={onClick}
-            style={{...{
-                pointerEvents: ariaHidden ? 'none' : 'all'
-            }, ...style}}
         >
-            <Image 
-                src={`/icons/${icon}.svg`}
-                width={IMAGE_SIZE}
-                height={IMAGE_SIZE}
-                alt={ariaLabel || ''}
-            />
+            {image}
         </button>
     )
 });

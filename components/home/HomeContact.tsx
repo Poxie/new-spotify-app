@@ -48,7 +48,7 @@ export const HomeContact = () => {
                 aria-hidden="true"
             >
                 <Image 
-                    src={'/icons/separator.svg'}
+                    src={'/imgs/separator.png'}
                     layout={'fill'}
                     objectFit={'cover'}
                 />

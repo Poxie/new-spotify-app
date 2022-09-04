@@ -46,17 +46,17 @@ export const TopListTracks: React.FC<{
                         key={track.id}
                     />
                 ))}
-
-                {count < tracks.length && (
-                    <Button 
-                        type={'transparent'} 
-                        className={styles['more-button']}
-                        onClick={loadMore}
-                    >
-                        Load more
-                    </Button>
-                )}
             </ul>
+            
+            {count < tracks.length && (
+                <Button 
+                    type={'transparent'} 
+                    className={styles['more-button']}
+                    onClick={loadMore}
+                >
+                    Load more
+                </Button>
+            )}
         </section>
     )
 }

@@ -41,14 +41,20 @@ export default function login() {
                 })
                 .catch(error => {
                     // On error, request new code
-                    window.location.href = CODE_URL;
+                    window.location.replace(CODE_URL);
                 })
         }
         // Else redirect to login page 
         else {
-            window.location.href = CODE_URL;
+            window.location.replace(CODE_URL);
         }
     }, []);
 
-    return null;
+    return(
+        <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <h1>
+                Logging you in...
+            </h1>
+        </div>
+    );
 }
